@@ -1,4 +1,4 @@
 # Miru扩展js
-bangumi    动画（视频）
-manga      漫画
-fikushon   小说
+1. bangumi    动画（视频）
+2. manga      漫画
+3. fikushon   小说
