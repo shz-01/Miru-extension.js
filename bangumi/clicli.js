@@ -11,7 +11,7 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-  // 最近更新
+  // 动漫列表 Anime List アニメのリスト
   async latest(page) {
     const res = await this.request(`/show/id/1/page/${page}.html`)
     const bangumiList = await this.querySelectorAll(res, 'div[class="module-items module-poster-items-base "] a')
@@ -26,7 +26,7 @@ export default class extends Extension {
     return bangumi
   }
 
-  // 搜索
+  // 动漫搜索 Anime Search アニメ検索
   async search(kw, page) {
     const res = await this.request(`/search/page/${page}/wd/${encodeURI(kw)}.html`)
     const bangumiList = await this.queryXPath(res, '//div[@class="module-items module-card-items"]/div').allHTML
@@ -42,7 +42,7 @@ export default class extends Extension {
     return bangumi;
   }
 
-  // 详情
+  // 动漫详情 Anime details アニメの詳細
   async detail(url) {
     const res = await this.request(`${url}`)
     const title = await this.queryXPath(res, '//div[@class="module-info-heading"]/h1').text
@@ -60,7 +60,7 @@ export default class extends Extension {
     return { title, cover, desc, episodes: [{ title: "S线(卡顿换线路→)", urls: chapter }] }
   }
 
-  // 观看
+  // 动漫观看 Anime Watch アニメ視聴
   async watch(url) {
     const res = await this.request(`${url}`)
     const UserID = url.toString().split('/')[2]
